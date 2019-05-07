@@ -1,0 +1,54 @@
+{
+    "title": "Local Search Client",
+    "description": "The Local Search client lets you send a search query to Bing and get back search results that include local businesses such as restaurants, hotels, retail stores, or other local businesses. The query can specify the name of the local business or it can ask for a list (for example, restaurants near me).",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/microsoft.com/cognitiveservices-LocalSearch/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.cognitive.microsoft.com/localbusinesses/v7.0/search",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "apiKeyHeader": {
+                "label": "Ocp-Apim-Subscription-Key (apiKeyHeader)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Local_Search": {
+            "main": "./lib/actions/Local_Search.js",
+            "title": "The Local Search API lets you send a search query to Bing and get back search results that include local businesses such as restaurants, hotels, retail stores, or other local businesses. The query can specify the name of the local business or it can ask for a list (for example, restaurants near me).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Local_Search.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
